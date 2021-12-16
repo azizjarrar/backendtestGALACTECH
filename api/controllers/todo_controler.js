@@ -28,7 +28,7 @@ exports.get=(req,res)=>{
 }
 exports.delete=(req,res)=>{
     if(validator(req.body,["id"],res)){return}
-    task_collection.findOneAndRemove({id:req.body.id}).then((result)=> {res.status(res.statusCode).json({message: "tasks was removed"})
+    task_collection.findOneAndRemove({_id:Mongoose.Types.ObjectId(req.body.id)}).then((result)=> {res.status(res.statusCode).json({message: "tasks was removed"})
     }).catch(error=>{
         res.status(res.statusCode).json({
           message: error.message,
