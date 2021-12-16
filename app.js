@@ -14,7 +14,7 @@ mongoose.connect( 'mongodb+srv://aziz:aziz@cluster0.xawtq.mongodb.net/testgalact
       console.log('connection to database')
     }
  
-    var whitelist = ['http://localhost:3000']
+    var whitelist = ['http://localhost:3000',"https://frontendtest-galactech.vercel.app/"]
     var corsOptions = {
       credentials: true, 
       origin: function(origin, callback) {
