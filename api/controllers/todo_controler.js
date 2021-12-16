@@ -37,9 +37,11 @@ exports.delete=(req,res)=>{
     })
 }
 exports.update=(req,res)=>{
+
     if(validator(req.body,["id"],res)){return}
     const task = req.body.task;
-    task_collection.findOneAndUpdate({id:req.body.id},{ $set: task }).then((result)=> {res.status(res.statusCode).json({message: "tasks was updated"})
+
+    task_collection.findOneAndUpdate({_id:Mongoose.Types.ObjectId(req.body.id)},{ $set: {task:task} }).then((result)=> {res.status(res.statusCode).json({message: "tasks was updated"})
     }).catch(error=>{
         res.status(res.statusCode).json({
           message: error.message,
